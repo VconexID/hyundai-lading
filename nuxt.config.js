@@ -1,6 +1,8 @@
-import colors from 'vuetify/es5/util/colors'
+// import colors from 'vuetify/es5/util/colors'
 
 export default {
+  // redirect ssl
+  // serverMiddleware: ['redirect-ssl'],
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     titleTemplate: '%s - Galery Indonesia',
@@ -22,10 +24,14 @@ export default {
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: [],
+  css: ['~/assets/styles.css'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [],
+  plugins: [
+    // { src: '~/plugins/persistedState.js' },
+    { src: '~/plugins/axios.js' },
+    { src: '~/plugins/TiptapVuetify.js' },
+  ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -36,6 +42,17 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    // tailwind
+    '@nuxtjs/tailwindcss',
+    // sweetalert module
+    'vue-sweetalert2/nuxt',
+    // currency format
+    [
+      'vue-currency-filter/nuxt',
+      {
+        symbol: 'IDR',
+      },
+    ],
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -54,5 +71,20 @@ export default {
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {},
+  build: {
+    transpile: ['vuetify/lib', 'tiptap-vuetify'],
+  },
+
+  // loading bar configuration
+  loading: {
+    height: '3px',
+    color: '#fff',
+  },
+  // tailwind configuration
+  tailwindcss: {
+    config: {
+      prefix: 'tw-',
+      important: true,
+    },
+  },
 }
