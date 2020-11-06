@@ -5,8 +5,8 @@ export default {
   // serverMiddleware: ['redirect-ssl'],
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    titleTemplate: '%s - Galery Indonesia',
-    title: 'Galery Indonesia',
+    titleTemplate: '%s - Nuxt Starter',
+    title: 'Nuxt Starter',
     meta: [
       { charset: 'utf-8' },
       {

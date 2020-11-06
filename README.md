@@ -1,4 +1,4 @@
-# gallery-frontend
+# nuxt-starter
 
 ## Build Setup
 
