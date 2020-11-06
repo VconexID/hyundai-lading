@@ -14,13 +14,13 @@ export default {
   name: 'Dashboard',
   middleware({ store, redirect }) {
     // If the user is not authenticated
-    // if (!store.state.auth.token) {
-    //   return redirect('/login-ap2li')
-    // }
+    if (!store.state.auth.token) {
+      return redirect('/admin-login')
+    }
     // If the user role not admin
-    // if (store.state.user.user.role !== '0') {
-    //   return redirect('/')
-    // }
+    if (store.state.auth.role !== 0) {
+      return redirect('/')
+    }
   },
 }
 </script>

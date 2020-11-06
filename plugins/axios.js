@@ -1,5 +1,5 @@
-export default function ({ $axios, store, $auth, redirect }) {
-  $axios.setBaseURL('https://api2li.vconex.id/api')
+export default function ({ $axios, store, redirect, $swal }) {
+  $axios.setBaseURL('http://127.0.0.1:8000/api')
 
   $axios.onRequest((config) => {
     const user = store.state.auth
@@ -14,6 +14,7 @@ export default function ({ $axios, store, $auth, redirect }) {
     const code = parseInt(error.response && error.response.status)
     if (code === 401) {
       store.dispatch('auth/removeToken')
+      $swal('Session Expired', 'Your Token Invalid', 'error')
       return redirect('/')
     }
   })

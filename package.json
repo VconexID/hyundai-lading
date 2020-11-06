@@ -1,5 +1,5 @@
 {
-  "name": "gallery-frontend",
+  "name": "nuxt-starter",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -19,6 +19,7 @@
     "redirect-ssl": "^2.0.0",
     "tiptap-vuetify": "^2.24.0",
     "vue-currency-filter": "^5.2.0",
+    "vue-lottie": "^0.2.1",
     "vue-sweetalert2": "^4.1.1",
     "vuex-persistedstate": "^4.0.0-beta.1"
   },

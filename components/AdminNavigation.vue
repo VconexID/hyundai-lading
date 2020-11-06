@@ -57,7 +57,7 @@
             </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title
-                class="mt-2 text-capitalize"
+                class="text-capitalize"
                 v-text="item.text"
               ></v-list-item-title>
             </v-list-item-content>
@@ -102,6 +102,11 @@ export default {
       drawer: null,
       items: [
         {
+          text: 'examples',
+          icon: 'mdi-circle',
+          link: '/admin/examples',
+        },
+        {
           text: 'item',
           icon: 'mdi-circle',
           children: [
@@ -116,11 +121,6 @@ export default {
               text: 'sub-item',
             },
           ],
-        },
-        {
-          text: 'item',
-          icon: 'mdi-circle',
-          link: '',
         },
       ],
       dropdownMenu: [

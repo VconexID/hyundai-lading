@@ -11,7 +11,9 @@
         >
         <v-card-text>
           <v-form
-            @submit.prevent="$store.dispatch('example/storeExample', form)"
+            @submit.prevent="
+              $store.dispatch('example/updateExample', { form, optionalData })
+            "
           >
             <v-text-field
               v-model="form.title"
@@ -21,7 +23,7 @@
               :error-messages="$store.state.errors.title"
             ></v-text-field>
             <v-file-input
-              v-model="form.image"
+              v-model="optionalData.image"
               outlined
               dense
               prepend-icon=""
@@ -54,14 +56,28 @@
 
 <script>
 export default {
+  props: {
+    id: {
+      type: [Number, String],
+      required: true,
+    },
+  },
   data() {
     return {
-      form: {
-        title: '',
-        description: '',
+      optionalData: {
         image: [],
       },
     }
+  },
+  computed: {
+    form: {
+      get() {
+        return this.$store.state.example.example
+      },
+    },
+  },
+  created() {
+    this.$store.dispatch('example/getExample', this.id)
   },
 }
 </script>

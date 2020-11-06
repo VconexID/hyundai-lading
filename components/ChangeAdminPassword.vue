@@ -10,20 +10,38 @@
           ></v-card-title
         >
         <v-card-text>
-          <v-form @submit.prevent="">
+          <v-form
+            @submit.prevent="$store.dispatch('auth/changePassword', form)"
+          >
             <v-text-field
               v-model="form.old_password"
               label="Old Password"
               outlined
-              type="password"
+              :type="type"
               dense
+              append-outer-icon="mdi-eye"
+              :error-messages="$store.state.errors.old_password"
+              @click:append-outer="changeType"
             ></v-text-field>
             <v-text-field
               v-model="form.new_password"
               label="New Password"
-              type="password"
+              :type="type"
+              outlined
+              :error-messages="$store.state.errors.new_password"
+              dense
+              append-outer-icon="mdi-eye"
+              @click:append-outer="changeType"
+            ></v-text-field>
+            <v-text-field
+              v-model="form.confirm_password"
+              :error-messages="$store.state.errors.confirm_password"
+              label="Confirm Password"
+              :type="type"
               outlined
               dense
+              append-outer-icon="mdi-eye"
+              @click:append-outer="changeType"
             ></v-text-field>
             <v-card-actions>
               <v-spacer></v-spacer>
@@ -49,8 +67,19 @@ export default {
       form: {
         old_password: '',
         new_password: '',
+        confirm_password: '',
       },
+      type: 'password',
     }
+  },
+  methods: {
+    changeType() {
+      if (this.type === 'password') {
+        this.type = 'text'
+      } else {
+        this.type = 'password'
+      }
+    },
   },
 }
 </script>

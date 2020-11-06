@@ -8,6 +8,7 @@ const serverSideTable = {
       footer: {
         disableItemsPerPage: true,
       },
+      search: '',
     }
   },
   created() {
@@ -16,12 +17,23 @@ const serverSideTable = {
   methods: {
     async getDataFromApi(pagination) {
       this.items = []
+      this.search = ''
       this.loading = true
       const { data } = await this.$axios.get(`/${this.url}?page=` + pagination)
       this.loading = false
       this.items = data.data
       this.totalItems = data.total
       this.from = data.from
+    },
+    async searchData() {
+      this.items = []
+      this.loading = true
+      const { data } = await this.$axios.get(
+        `/${this.url}?search=` + this.search
+      )
+      this.totalItems = data.length
+      this.loading = false
+      this.items = data
     },
   },
 }
