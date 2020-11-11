@@ -112,8 +112,8 @@ export default {
           children: [
             {
               icon: 'mdi-circle-outline',
-              link: '',
-              text: 'sub-item',
+              link: '/admin/dropzone',
+              text: 'dropzone example',
             },
             {
               icon: 'mdi-circle-outline',
