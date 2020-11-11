@@ -44,6 +44,12 @@ export default {
     '@nuxtjs/vuetify',
     // tailwind
     '@nuxtjs/tailwindcss',
+  ],
+
+  // Modules (https://go.nuxtjs.dev/config-modules)
+  modules: [
+    // https://go.nuxtjs.dev/axios
+    '@nuxtjs/axios',
     // sweetalert module
     'vue-sweetalert2/nuxt',
     // currency format
@@ -53,12 +59,6 @@ export default {
         symbol: 'IDR',
       },
     ],
-  ],
-
-  // Modules (https://go.nuxtjs.dev/config-modules)
-  modules: [
-    // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
