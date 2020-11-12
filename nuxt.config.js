@@ -23,6 +23,11 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
+  // runtime config
+  publicRuntimeConfig: {
+    apiURL: 'http://127.0.0.1:8000/api',
+  },
+
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: ['~/assets/styles.css'],
 

@@ -1,5 +1,5 @@
-export default function ({ $axios, store, redirect, $swal }) {
-  $axios.setBaseURL('http://127.0.0.1:8000/api')
+export default function ({ $axios, store, redirect, $swal, $config }) {
+  $axios.setBaseURL($config.apiURL)
 
   $axios.onRequest((config) => {
     const user = store.state.auth

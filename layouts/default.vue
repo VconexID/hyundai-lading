@@ -1,21 +1,28 @@
 <template>
   <v-app>
-    <v-app-bar flat class="tw-border-b tw-border-gray-500" app>
-      <v-spacer></v-spacer>
-      <h1 class="title text-uppercase">nuxt js</h1>
-      <v-spacer></v-spacer>
-    </v-app-bar>
-    <v-main>
-      <v-container>
-        <nuxt />
-      </v-container>
+    <web-navigation></web-navigation>
+    <v-main class="background">
+      <nuxt />
     </v-main>
-    <v-footer app>
+    <!-- <v-footer app>
       <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer>
+    </v-footer> -->
   </v-app>
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'Default',
+}
 </script>
+
+<style scoped>
+.background {
+  background: url('https://ik.imagekit.io/vconexID/cool-background__2_.png')
+    no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+</style>
