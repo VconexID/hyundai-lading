@@ -2,31 +2,24 @@
   <v-row>
     <v-col>
       <v-card flat>
-        <v-card-title
-          class="text-capitalize tw-border-b tw-border-gray-400 pa-lg-5"
-          >Example <v-spacer></v-spacer>
-          <v-btn
-            color="primary"
-            small
-            fab
-            depressed
-            nuxt
-            to="/admin/examples/create"
-            ><v-icon>mdi-plus</v-icon></v-btn
-          ></v-card-title
-        >
-        <v-card-text>
+        <v-card-title class="text-capitalize">
+          example
+          <v-spacer></v-spacer>
           <v-text-field
             v-model="search"
+            clearable
             :disabled="loading"
-            label="Search data here"
-            append-outer-icon="mdi-refresh"
+            single-line
+            hide-details
+            label="Search"
+            :append-icon="searchIcon"
             @keypress.enter="searchData()"
-            @click:append-outer="getDataFromApi()"
           ></v-text-field>
+        </v-card-title>
+        <v-card-text>
           <v-data-table
+            hide-default-footer
             :headers="headers"
-            :footer-props="footer"
             :server-items-length="totalItems"
             :items="items"
             :disable-sort="true"
@@ -65,9 +58,19 @@
               </tr>
             </template>
           </v-data-table>
+          <div class="text-center pt-2">
+            <v-pagination
+              v-model="page"
+              circle
+              :length="totalPage"
+              @input="getDataFromApi"
+            ></v-pagination>
+          </div>
         </v-card-text>
       </v-card>
     </v-col>
+    <!-- Float Menu -->
+    <float-menu :create="true" :create-link="'examples/create'"></float-menu>
   </v-row>
 </template>
 

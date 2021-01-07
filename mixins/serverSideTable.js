@@ -2,17 +2,21 @@ const serverSideTable = {
   data() {
     return {
       items: [],
+      totalPage: 0,
       totalItems: 0,
       from: 0,
+      page: 0,
       loading: false,
-      footer: {
-        disableItemsPerPage: true,
-      },
       search: '',
     }
   },
   created() {
-    this.getDataFromApi()
+    this.getDataFromApi(1)
+  },
+  computed: {
+    searchIcon() {
+      return this.search === '' || this.search === null ? 'mdi-magnify' : ''
+    },
   },
   methods: {
     async getDataFromApi(pagination) {
