@@ -13,8 +13,8 @@
 
       <v-menu offset-y transition="slide-y-transition">
         <template v-slot:activator="{ on, attrs }">
-          <v-btn color="success" v-bind="attrs" icon v-on="on">
-            <v-icon>mdi-account</v-icon>
+          <v-btn rounded depressed tile v-bind="attrs" v-on="on">
+            <v-icon color="primary" class="mr-1">mdi-account</v-icon>
           </v-btn>
         </template>
         <v-list dense outlined class="py-0 overline" max-width="150">
@@ -36,8 +36,9 @@
     <!-- Sidebar -->
     <v-navigation-drawer
       v-model="drawer"
+      src="https://ik.imagekit.io/vconexID/example/pexels-aleksandar-pasaric-2603464.jpg"
       app
-      color="blue darken-3"
+      color="#2c3e50"
       dark
       width="300"
     >

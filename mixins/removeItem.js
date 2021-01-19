@@ -9,9 +9,9 @@ const removeItem = {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, delete it!',
-      }).then((result) => {
+      }).then(async (result) => {
         if (result.isConfirmed) {
-          this.$axios.delete(`/${this.url}/${id}`)
+          await this.$axios.delete(`/${this.url}/${id}`)
           this.$swal('Deleted!', 'Your data has been deleted.', 'success')
           this.getDataFromApi()
         }
