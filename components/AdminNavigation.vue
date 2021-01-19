@@ -1,15 +1,13 @@
 <template>
   <div>
     <!-- header -->
-    <v-app-bar app flat color="white">
+    <v-app-bar app class="tw-shadow-md" color="white">
       <v-app-bar-nav-icon
         v-if="$vuetify.breakpoint.mdAndDown"
         @click="drawer = !drawer"
       ></v-app-bar-nav-icon>
-      <v-toolbar-title
-        ><v-icon color="primary" class="mb-2">mdi-weather-partly-cloudy</v-icon>
-        <span>Welcome, Admin!</span></v-toolbar-title
-      >
+
+      <v-toolbar-title class="text-capitalize" v-text="title"></v-toolbar-title>
 
       <v-spacer></v-spacer>
 
@@ -36,20 +34,24 @@
     </v-app-bar>
 
     <!-- Sidebar -->
-    <v-navigation-drawer v-model="drawer" app color="blue-grey darken-4" dark>
-      <v-list-item>
-        <v-list-item-content>
-          <v-list-item-title class="title py-5">
-            <v-icon class="mb-1 mr-2">mdi-hammer-screwdriver</v-icon>Admin
-            Dashboard
-          </v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
+    <v-navigation-drawer
+      v-model="drawer"
+      app
+      color="blue darken-3"
+      dark
+      width="300"
+    >
+      <v-img
+        src="https://ik.imagekit.io/vconexID/Logo_White.png"
+        max-width="200"
+        contain
+        class="mx-auto py-10"
+      ></v-img>
 
       <v-divider></v-divider>
 
-      <v-list dense>
-        <div v-for="(item, i) in items" :key="i">
+      <v-list dense nav>
+        <div v-for="(item, i) in items" :key="i" class="my-2">
           <!-- Non children menu -->
           <v-list-item v-if="!item.children" nuxt :to="item.link">
             <v-list-item-icon>
@@ -138,6 +140,13 @@ export default {
         },
       ],
     }
+  },
+  computed: {
+    title() {
+      const path = this.$route.path.split('/')
+      const title = path[2]
+      return title
+    },
   },
 }
 </script>

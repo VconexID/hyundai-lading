@@ -13,8 +13,6 @@ export const storeExample = async function ({ dispatch }, payload) {
     dispatch('toggleLoading', null, { root: true })
     // set notification
     this.$swal('Success', 'Item Added', 'success')
-    // redirect to index page
-    this.$router.push('/admin/examples')
   } catch (error) {
     // set error
     if (error.response.status === 422) {
@@ -25,9 +23,11 @@ export const storeExample = async function ({ dispatch }, payload) {
   }
 }
 
-export const getExample = async function ({ commit }, payload) {
+export const getExample = async function ({ commit, dispatch }, payload) {
   try {
+    dispatch('toggleLoading', null, { root: true })
     const { data } = await this.$axios.get(`${END_POINT}/${payload}`)
+    dispatch('toggleLoading', null, { root: true })
     commit('SET_EXAMPLE', data)
   } catch (error) {
     // error
@@ -38,18 +38,16 @@ export const updateExample = async function ({ dispatch }, payload) {
   try {
     const formData = new FormData()
     formData.append('_method', 'put')
-    formData.append('title', payload.form.title)
-    formData.append('description', payload.form.description)
-    formData.append('image', payload.optionalData.image)
+    formData.append('title', payload.title)
+    formData.append('description', payload.description)
+    formData.append('image', payload.image ? payload.image : '')
     // set loading state
     dispatch('toggleLoading', null, { root: true })
-    await this.$axios.post(`${END_POINT}/${payload.form.id}`, formData)
+    await this.$axios.post(`${END_POINT}/${payload.id}`, formData)
     // set loading state
     dispatch('toggleLoading', null, { root: true })
     // set notification
     this.$swal('Success', 'Item Updated', 'success')
-    // redirect to index page
-    this.$router.push('/admin/examples')
   } catch (error) {
     // set error
     if (error.response.status === 422) {

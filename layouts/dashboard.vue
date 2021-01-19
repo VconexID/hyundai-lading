@@ -3,7 +3,7 @@
     <!-- App Header & Sidebar -->
     <admin-navigation></admin-navigation>
 
-    <v-main class="tw-bg-gray-400">
+    <v-main>
       <nuxt></nuxt>
     </v-main>
   </v-app>

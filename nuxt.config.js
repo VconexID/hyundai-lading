@@ -90,6 +90,15 @@ export default {
     config: {
       prefix: 'tw-',
       important: true,
+      theme: {
+        backgroundColor: (theme) => ({
+          ...theme('colors'),
+          primary: '#3490dc',
+          secondary: '#ffed4a',
+          danger: '#e3342f',
+          dashboard: '#f6f6f6',
+        }),
+      },
     },
   },
 }
