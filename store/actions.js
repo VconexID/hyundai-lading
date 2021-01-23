@@ -5,3 +5,7 @@ export const toggleLoading = function ({ commit }) {
 export const toggleError = function ({ commit }, payload) {
   commit('TOGGLE_ERROR', payload)
 }
+
+export const remove = function ({ commit }, payload) {
+  commit(payload, null, { root: true })
+}

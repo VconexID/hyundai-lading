@@ -1,85 +1,61 @@
 <template>
-  <v-dialog v-model="show" persistent no-click-animation max-width="900">
-    <v-card class="tw-border-none">
-      <v-toolbar dark color="primary" flat>
-        <v-toolbar-title>Vehicle Variant</v-toolbar-title>
-        <v-spacer></v-spacer>
-        <v-btn icon depressed dark @click="toggleDialog">
-          <v-icon>mdi-close</v-icon>
-        </v-btn>
-      </v-toolbar>
-      <v-divider class="mb-5"></v-divider>
-      <v-card-text>
-        <v-form @submit.prevent="submit">
-          <v-container fluid class="pa-0">
-            <!-- First Line -->
-            <v-row>
-              <v-col lg="6" cols="12">
-                <v-text-field
-                  v-model="form.title"
-                  label="Name"
-                  outlined
-                  dense
-                  :error-messages="$store.state.errors.title"
-                ></v-text-field>
-              </v-col>
-              <v-col lg="6" cols="12">
-                <v-file-input
-                  v-model="form.image"
-                  outlined
-                  dense
-                  prepend-icon=""
-                  label="image"
-                  :error-messages="$store.state.errors.image"
-                ></v-file-input>
-              </v-col>
-            </v-row>
-            <!-- Second Line -->
-            <v-row>
-              <v-col>
-                <v-alert
-                  v-if="$store.state.errors.description"
-                  type="error"
-                  dense
-                >
-                  {{ $store.state.errors.description[0] }}
-                </v-alert>
-                <text-editor
-                  v-model="form.description"
-                  class="tw-border tw-border-gray-500 tw-rounded"
-                  :error-messages="$store.state.errors.description"
-                ></text-editor>
-              </v-col>
-            </v-row>
-            <!-- Third Line -->
-            <v-row>
-              <v-col>
-                <div class="text-right mt-3">
-                  <v-btn
-                    type="submit"
-                    color="primary"
-                    depressed
-                    :loading="$store.state.loading"
-                    >Submit</v-btn
-                  >
-                </div>
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-form>
-      </v-card-text>
-    </v-card>
-  </v-dialog>
+  <v-row>
+    <v-col>
+      <v-card>
+        <v-card-title class="text-capitalize">
+          {{ form.id ? 'Edit' : 'Add' }} new data
+          <v-spacer></v-spacer>
+          <v-icon color="primary">mdi-book-plus</v-icon>
+        </v-card-title>
+        <v-divider class="mb-5"></v-divider>
+        <v-card-text>
+          <v-form @submit.prevent="submit">
+            <v-text-field
+              v-model="form.title"
+              label="Title"
+              :disabled="$store.state.loading"
+              outlined
+              dense
+              :error-messages="$store.state.errors.title"
+            ></v-text-field>
+            <v-file-input
+              v-model="form.image"
+              prepend-icon=""
+              label="Image"
+              :disabled="$store.state.loading"
+              outlined
+              dense
+              :error-messages="$store.state.errors.image"
+            ></v-file-input>
+            <v-alert v-if="$store.state.errors.description" type="error" dense>
+              {{ $store.state.errors.description[0] }}
+            </v-alert>
+            <text-editor
+              v-model="form.description"
+              :error-messages="$store.state.errors.description"
+            ></text-editor>
+            <div class="text-right mt-3">
+              <v-btn
+                type="submit"
+                color="primary"
+                depressed
+                :loading="$store.state.loading"
+              >
+                Save data
+              </v-btn>
+            </div>
+          </v-form>
+        </v-card-text>
+      </v-card>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
+import resetForm from '../mixins/resetForm'
+
 export default {
-  props: {
-    show: {
-      type: Boolean,
-      default: false,
-    },
-  },
+  mixins: [resetForm],
   data() {
     return {
       form: {
@@ -92,6 +68,7 @@ export default {
         description: '',
         image: null,
       },
+      url: 'examples',
     }
   },
   computed: {
@@ -99,31 +76,35 @@ export default {
       return this.$store.state.example.example
     },
   },
-  watch: {
-    example(value) {
-      value.image = null
-      this.form = Object.assign({}, value)
-    },
+  created() {
+    if (Object.keys(this.example).length > 0) {
+      this.example.image = null
+      this.form = Object.assign({}, this.example)
+    } else {
+      this.resetForm()
+    }
+  },
+  destroyed() {
+    this.$store.dispatch('remove', 'example/REMOVE_EXAMPLE')
   },
   methods: {
-    toggleDialog() {
-      this.$store.dispatch('toggleError')
-      this.form = Object.assign({}, this.initialForm)
-      this.$emit('close', null)
-    },
-    actionCompleted() {
-      if (Object.keys(this.$store.state.errors).length === 0) {
-        this.$emit('update', null)
-        this.toggleDialog()
-      }
-    },
     async submit() {
       if (this.form.id) {
-        await this.$store.dispatch('example/updateExample', this.form)
-        this.actionCompleted()
+        // update data
+        await this.$sendData(`${this.url}/` + this.form.id, this.form, true)
+        this.$redirectPage('/admin/examples')
       } else {
-        await this.$store.dispatch('example/storeExample', this.form)
-        this.actionCompleted()
+        // store data
+        // create form data
+        const formData = new FormData()
+
+        Object.keys(this.form).forEach((element) => {
+          formData.append(element, this.form[element] || '')
+        })
+        // store data
+        await this.$sendData(this.url, formData)
+
+        this.$redirectPage('/admin/examples')
       }
     },
   },

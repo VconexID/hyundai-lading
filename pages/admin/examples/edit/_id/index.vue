@@ -1,11 +1,15 @@
 <template>
   <v-container>
-    <example-edit-form :id="$route.params.id"></example-edit-form>
+    <example-form></example-form>
   </v-container>
 </template>
 
 <script>
-export default {}
+export default {
+  async asyncData({ store, params }) {
+    await store.dispatch('example/getExample', params.id)
+  },
+}
 </script>
 
 <style></style>

@@ -34,14 +34,7 @@
     </v-app-bar>
 
     <!-- Sidebar -->
-    <v-navigation-drawer
-      v-model="drawer"
-      src="https://ik.imagekit.io/vconexID/example/pexels-aleksandar-pasaric-2603464.jpg"
-      app
-      color="#2c3e50"
-      dark
-      width="300"
-    >
+    <v-navigation-drawer v-model="drawer" app color="rgb(29, 34, 40)" dark>
       <v-img
         src="https://ik.imagekit.io/vconexID/Logo_White.png"
         max-width="200"
@@ -54,7 +47,12 @@
       <v-list dense nav>
         <div v-for="(item, i) in items" :key="i" class="my-2">
           <!-- Non children menu -->
-          <v-list-item v-if="!item.children" nuxt :to="item.link">
+          <v-list-item
+            v-if="!item.children"
+            nuxt
+            :to="item.link"
+            color="primary"
+          >
             <v-list-item-icon>
               <v-icon v-text="item.icon"></v-icon>
             </v-list-item-icon>
@@ -77,6 +75,7 @@
             <v-list-item
               v-for="(itemChild, indexChild) in item.children"
               :key="indexChild"
+              color="primary"
               exact
               nuxt
               :to="itemChild.link"
@@ -86,7 +85,7 @@
               </v-list-item-icon>
               <v-list-item-content>
                 <v-list-item-title
-                  class="mt-2 text-capitalize"
+                  class="mt-1 text-capitalize"
                   v-text="itemChild.text"
                 ></v-list-item-title>
               </v-list-item-content>

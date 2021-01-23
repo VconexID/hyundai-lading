@@ -3,6 +3,7 @@
     <!-- Use the component in the right place of the template -->
     <tiptap-vuetify
       :value="value"
+      class="tw-border tw-border-grey-400"
       :extensions="extensions"
       @input="$emit('input', arguments[0])"
     />

@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="fill-height">
     <dashboard-card></dashboard-card>
   </v-container>
 </template>

@@ -1,6 +1,7 @@
 <template>
   <v-container>
-    <example-create-form></example-create-form>
+    <page-navigation></page-navigation>
+    <example-form></example-form>
   </v-container>
 </template>
 

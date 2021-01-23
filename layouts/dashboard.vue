@@ -3,7 +3,7 @@
     <!-- App Header & Sidebar -->
     <admin-navigation></admin-navigation>
 
-    <v-main>
+    <v-main class="tw-bg-dashboard">
       <nuxt></nuxt>
     </v-main>
   </v-app>

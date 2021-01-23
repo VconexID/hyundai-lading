@@ -36,6 +36,8 @@ export default {
     { src: '~/plugins/persistedState.js' },
     { src: '~/plugins/axios.js' },
     { src: '~/plugins/TiptapVuetify.js' },
+    { src: '~/plugins/sendData.js' },
+    { src: '~/plugins/redirectPage.js' },
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -96,7 +98,7 @@ export default {
           primary: '#3490dc',
           secondary: '#ffed4a',
           danger: '#e3342f',
-          dashboard: '#f6f6f6',
+          dashboard: '#f6f7ff',
         }),
       },
     },
