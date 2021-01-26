@@ -52,10 +52,16 @@
 </template>
 
 <script>
-import resetForm from '../mixins/resetForm'
+import form from '../mixins/form'
 
 export default {
-  mixins: [resetForm],
+  mixins: [form],
+  props: {
+    url: {
+      type: String,
+      default: '',
+    },
+  },
   data() {
     return {
       form: {
@@ -68,7 +74,6 @@ export default {
         description: '',
         image: null,
       },
-      url: 'examples',
     }
   },
   computed: {
@@ -86,24 +91,20 @@ export default {
   },
   destroyed() {
     this.$store.dispatch('remove', 'example/REMOVE_EXAMPLE')
+    this.$store.dispatch('toggleError')
   },
   methods: {
     async submit() {
+      const data = this.createFormData()
+
       if (this.form.id) {
         // update data
-        await this.$sendData(`${this.url}/` + this.form.id, this.form, true)
+
+        await this.$sendData(`${this.url}/` + this.form.id, data, true)
         this.$redirectPage('/admin/examples')
       } else {
         // store data
-        // create form data
-        const formData = new FormData()
-
-        Object.keys(this.form).forEach((element) => {
-          formData.append(element, this.form[element] || '')
-        })
-        // store data
-        await this.$sendData(this.url, formData)
-
+        await this.$sendData(this.url, data)
         this.$redirectPage('/admin/examples')
       }
     },

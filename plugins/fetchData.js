@@ -1,13 +1,8 @@
 export default ({ store, $axios }, inject) => {
-  inject('sendData', async (url, payload, update = false) => {
+  inject('fetchData', async (url) => {
     try {
-      let data
       store.dispatch('toggleLoading', null, { root: true })
-      if (update) {
-        data = await $axios.put(url, payload)
-      } else {
-        data = await $axios.post(url, payload)
-      }
+      const { data } = await $axios.get(url)
       store.dispatch('toggleError', null, { root: true })
       store.dispatch('toggleLoading', null, { root: true })
       return data

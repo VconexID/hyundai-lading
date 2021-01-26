@@ -1,16 +1,18 @@
 <template>
-  <v-dialog v-model="loading" hide-overlay persistent width="300">
-    <v-card color="primary" dark>
-      <v-card-text class="text-capitalize">
-        Please stand by
-        <v-progress-linear
-          indeterminate
-          color="white"
-          class="mb-0"
-        ></v-progress-linear>
-      </v-card-text>
-    </v-card>
-  </v-dialog>
+  <v-overlay :value="loading">
+    <v-dialog v-model="loading" hide-overlay persistent width="300">
+      <v-card color="primary" dark>
+        <v-card-text>
+          Wait Motherfuck*r
+          <v-progress-linear
+            indeterminate
+            color="white"
+            class="mb-0"
+          ></v-progress-linear>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
+  </v-overlay>
 </template>
 
 <script>

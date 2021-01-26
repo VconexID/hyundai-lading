@@ -1,12 +1,19 @@
 <template>
   <v-container>
     <page-navigation></page-navigation>
-    <example-form></example-form>
+    <example-form :url="url"></example-form>
+    <loader-dialog></loader-dialog>
   </v-container>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      url: 'examples',
+    }
+  },
+}
 </script>
 
 <style></style>

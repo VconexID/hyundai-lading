@@ -65,7 +65,12 @@
           </v-list-item>
 
           <!-- Menu + children -->
-          <v-list-group v-else :prepend-icon="item.icon" color="">
+          <v-list-group
+            v-else
+            :prepend-icon="item.icon"
+            color=""
+            :value="isPathMatch(item.paths)"
+          >
             <template v-slot:activator>
               <v-list-item-title
                 class="text-capitalize"
@@ -111,6 +116,7 @@ export default {
         {
           text: 'item',
           icon: 'mdi-circle',
+          paths: ['dropzone'],
           children: [
             {
               icon: 'mdi-circle-outline',
@@ -146,6 +152,18 @@ export default {
       const path = this.$route.path.split('/')
       const title = path[2]
       return title
+    },
+  },
+  methods: {
+    isPathMatch(path) {
+      const currentPath = this.$route.path.split('/')[2]
+      const checkPath = path.indexOf(currentPath)
+
+      if (checkPath === -1) {
+        return false
+      } else {
+        return true
+      }
     },
   },
 }

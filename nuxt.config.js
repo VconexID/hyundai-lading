@@ -37,6 +37,7 @@ export default {
     { src: '~/plugins/axios.js' },
     { src: '~/plugins/TiptapVuetify.js' },
     { src: '~/plugins/sendData.js' },
+    { src: '~/plugins/fetchData.js' },
     { src: '~/plugins/redirectPage.js' },
   ],
 
