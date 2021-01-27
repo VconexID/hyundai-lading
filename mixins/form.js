@@ -1,5 +1,10 @@
 const resetForm = {
   methods: {
+    /* 
+      Reset Form object value
+      for using this method you need to add object with name form and initial form
+      then you can use this function in your component
+    */
     resetForm() {
       this.form = Object.assign({}, this.initialForm)
     },
@@ -31,29 +36,15 @@ const resetForm = {
         return true
       }
     },
-    confirmDialog(submitData) {
-      if (this.createPath) {
-        this.data.push(this.form)
-        this.$swal({
-          title: 'Do you want to add more data?',
-          text: 'Your form will be cleared',
-          icon: 'warning',
-          showCancelButton: true,
-          showDenyButton: true,
-          denyButtonColor: '#43A047',
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'No, send data',
-          denyButtonText: `Yes, Add more data!`,
-        }).then((result) => {
-          if (result.isConfirmed) {
-            submitData()
-          } else if (result.isDenied) {
-            this.form = Object.assign({}, this.initialForm)
-            return false
-          }
-        })
-      }
+    /* 
+      Push data in form object to data object
+      also will automatically validate empty form and reset form
+      when this function used
+    */
+    pushData() {
+      if (!this.validateForm()) return false
+      this.data.push(this.form)
+      this.resetForm()
     },
   },
 }

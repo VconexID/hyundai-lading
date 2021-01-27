@@ -130,6 +130,23 @@ export default {
             },
           ],
         },
+        {
+          text: 'Relationship',
+          icon: 'mdi-circle',
+          paths: ['ancestors', 'descendants'],
+          children: [
+            {
+              icon: 'mdi-circle-outline',
+              link: '/admin/ancestors',
+              text: 'Ancestor',
+            },
+            {
+              icon: 'mdi-circle-outline',
+              link: '/admin/descendants',
+              text: 'Descendant',
+            },
+          ],
+        },
       ],
       dropdownMenu: [
         {
