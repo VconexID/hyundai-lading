@@ -53,8 +53,8 @@ export default {
     }
   },
   computed: {
-    example() {
-      return this.$store.state.example.example
+    ancestor() {
+      return this.$store.state.ancestor.ancestor
     },
     createPath() {
       const path = this.$route.path.split('/')
@@ -63,15 +63,14 @@ export default {
     },
   },
   created() {
-    if (Object.keys(this.example).length > 0) {
-      this.example.image = null
-      this.form = Object.assign({}, this.example)
+    if (Object.keys(this.ancestor).length > 0) {
+      this.form = Object.assign({}, this.ancestor)
     } else {
       this.resetForm()
     }
   },
   destroyed() {
-    this.$store.dispatch('remove', 'example/REMOVE_ANCESTOR')
+    this.$store.dispatch('remove', 'ancestor/REMOVE_ANCESTOR')
     this.$store.dispatch('toggleError')
   },
   methods: {
@@ -80,6 +79,8 @@ export default {
         if (!this.validateForm()) return false
         this.$emit('submitted', this.form)
       } else {
+        this.$sendData('ancestors/' + this.form.id, this.form, true)
+        this.$swal('Success', 'Action Completed', 'success')
       }
     },
   },

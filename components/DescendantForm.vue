@@ -15,7 +15,7 @@
         depressed
         :loading="$store.state.loading"
       >
-        {{ createPath ? 'Submit' : 'Update' }}
+        {{ createPath ? 'Submit' : 'Add' }}
       </v-btn>
       <v-badge
         v-if="createPath"
@@ -54,8 +54,11 @@ export default {
     }
   },
   computed: {
-    example() {
-      return this.$store.state.example.example
+    descendant() {
+      return this.$store.state.descendant.descendant
+    },
+    ancestor() {
+      return this.$store.state.ancestor.ancestor
     },
     createPath() {
       const path = this.$route.path.split('/')
@@ -64,22 +67,28 @@ export default {
     },
   },
   created() {
-    if (Object.keys(this.example).length > 0) {
-      this.example.image = null
-      this.form = Object.assign({}, this.example)
+    if (Object.keys(this.descendant).length > 0) {
+      this.form = Object.assign({}, this.descendant)
     } else {
       this.resetForm()
     }
   },
   destroyed() {
-    this.$store.dispatch('remove', 'example/REMOVE_ANCESTOR')
+    this.$store.dispatch('remove', 'descendant/REMOVE_DESCENDANT')
     this.$store.dispatch('toggleError')
   },
   methods: {
-    submit() {
+    async submit() {
       if (this.createPath) {
+        if (!this.validateForm()) return false
+        this.pushData()
         this.$emit('submitted', this.data)
       } else {
+        this.form.ancestor = this.ancestor.id
+        const { data } = await this.$sendData('descendants', this.form)
+        this.$store.dispatch('descendant/store', data)
+        this.resetForm()
+        this.$emit('submitted', null)
       }
     },
     cancel() {
