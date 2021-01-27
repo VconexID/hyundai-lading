@@ -7,7 +7,7 @@
       :search="search"
       :search-data="searchData"
     ></action-bar>
-    <example-card
+    <example-table
       :total-items="totalItems"
       :items="items"
       :loading="loading"
@@ -15,7 +15,7 @@
       :get-data-from-api="getDataFromApi"
       :footers="footers"
       :remove-item="removeItem"
-    ></example-card>
+    ></example-table>
     <loader-dialog></loader-dialog>
   </v-container>
 </template>

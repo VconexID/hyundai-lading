@@ -3,7 +3,7 @@
     <v-col>
       <v-card>
         <v-card-title class="text-capitalize">
-          {{ form.id ? 'Edit' : 'Add' }} new data
+          {{ form.id ? 'Edit' : 'Add' }} data
           <v-spacer></v-spacer>
           <v-icon color="primary">mdi-book-plus</v-icon>
         </v-card-title>
@@ -95,15 +95,14 @@ export default {
   },
   methods: {
     async submit() {
-      const data = this.createFormData()
-
       if (this.form.id) {
         // update data
-
-        await this.$sendData(`${this.url}/` + this.form.id, data, true)
+        const data = this.createFormData(true)
+        await this.$sendData(`${this.url}/` + this.form.id, data)
         this.$redirectPage('/admin/examples')
       } else {
         // store data
+        const data = this.createFormData()
         await this.$sendData(this.url, data)
         this.$redirectPage('/admin/examples')
       }
