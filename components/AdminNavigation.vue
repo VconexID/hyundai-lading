@@ -81,7 +81,6 @@
               v-for="(itemChild, indexChild) in item.children"
               :key="indexChild"
               color="primary"
-              exact
               nuxt
               :to="itemChild.link"
             >
@@ -133,19 +132,7 @@ export default {
         {
           text: 'Relationship',
           icon: 'mdi-circle',
-          paths: ['ancestors', 'descendants'],
-          children: [
-            {
-              icon: 'mdi-circle-outline',
-              link: '/admin/ancestors',
-              text: 'Ancestor',
-            },
-            {
-              icon: 'mdi-circle-outline',
-              link: '/admin/descendants',
-              text: 'Descendant',
-            },
-          ],
+          link: '/admin/ancestors',
         },
       ],
       dropdownMenu: [
