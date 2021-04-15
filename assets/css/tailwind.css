@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Hyundai Regular";
+  src: url('./assets/fonts/HyundaiSansHeadOffice-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: "Hyundai Medium";
+  src: url('./assets/fonts/HyundaiSansHeadOffice-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: "Hyundai Text";
+  src: url('./assets/fonts/HyundaiSansTextOffice-Regular.ttf') format('truetype');
+}

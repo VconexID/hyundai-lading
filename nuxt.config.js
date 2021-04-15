@@ -25,7 +25,7 @@ export default {
 
   // runtime config
   publicRuntimeConfig: {
-    apiURL: 'https://vconex-example-backend.herokuapp.com/api',
+    apiURL: process.env.BASE_URL || 'http://127.0.0.1:8000/api',
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
@@ -52,6 +52,7 @@ export default {
     '@nuxtjs/vuetify',
     // tailwind
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/dotenv',
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -86,21 +87,43 @@ export default {
   // loading bar configuration
   loading: {
     height: '3px',
-    color: '#fff',
+    color: '#00185a',
   },
   // tailwind configuration
   tailwindcss: {
+    cssPath: '~/assets/css/tailwind.css',
+    configPath: 'tailwind.config.js',
+    jit: true,
+    exposeConfig: false,
     config: {
       prefix: 'tw-',
       important: true,
+      purge: [
+        './components/**/*.{vue,js}',
+        './layouts/**/*.vue',
+        './pages/**/*.vue',
+        './plugins/**/*.{js,ts}',
+        './nuxt.config.{js,ts}',
+      ],
       theme: {
-        backgroundColor: (theme) => ({
-          ...theme('colors'),
-          primary: '#3490dc',
-          secondary: '#ffed4a',
-          danger: '#e3342f',
-          dashboard: '#f6f7ff',
-        }),
+        extend: {
+          fontFamily: {
+            'hyundai-regular': ["'Hyundai Regular'"],
+            'hyundai-medium': ["'Hyundai Medium'"],
+            'hyundai-text': ["'Hyundai Text'"],
+          },
+          backgroundImage: {
+            hyundai:
+              "url('https://ik.imagekit.io/vconexID/Hyundai-RSVP/background.png')",
+          },
+          backgroundColor: {
+            primary: '#00185a',
+            secondary: '#e7ded6',
+          },
+          textColor: {
+            primary: '#00185a',
+          },
+        },
       },
     },
   },

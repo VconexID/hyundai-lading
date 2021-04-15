@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.5",
+    "@nuxtjs/dotenv": "^1.4.1",
     "cookie": "^0.4.1",
     "core-js": "^3.6.5",
     "js-cookie": "^2.2.1",
@@ -27,13 +28,17 @@
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.1.0",
     "@nuxtjs/eslint-module": "^2.0.0",
-    "@nuxtjs/tailwindcss": "^3.2.0",
+    "@nuxtjs/tailwindcss": "^4.0.3",
     "@nuxtjs/vuetify": "^1.11.2",
+    "@tailwindcss/postcss7-compat": "^2.1.0",
+    "autoprefixer": "^9.8.6",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.10.0",
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-nuxt": "^1.0.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "prettier": "^2.1.2"
+    "postcss": "^7.0.35",
+    "prettier": "^2.1.2",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.0"
   }
 }

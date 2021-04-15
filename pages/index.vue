@@ -19,5 +19,11 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
+  middleware({ store, redirect }) {
+    // Jika pengguna tidak diautentikasi
+    if (!store.state.landing) {
+      return redirect('/welcome')
+    }
+  },
 }
 </script>

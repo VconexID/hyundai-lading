@@ -3,7 +3,7 @@
     <v-dialog v-model="loading" hide-overlay persistent width="300">
       <v-card color="primary" dark>
         <v-card-text>
-          Wait Motherfuck*r
+          Wait a moment
           <v-progress-linear
             indeterminate
             color="white"
