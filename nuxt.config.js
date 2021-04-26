@@ -5,8 +5,8 @@ export default {
   // serverMiddleware: ['redirect-ssl'],
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    titleTemplate: '%s - Nuxt Starter',
-    title: 'Nuxt Starter',
+    titleTemplate: '%s - Hyundai',
+    title: 'Index',
     meta: [
       { charset: 'utf-8' },
       {
@@ -77,6 +77,14 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     treeShake: true,
+    theme: {
+      themes: {
+        light: {
+          primary: '#00185a',
+          secondary: '#E3DAD1',
+        },
+      },
+    },
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
@@ -94,7 +102,6 @@ export default {
     cssPath: '~/assets/css/tailwind.css',
     configPath: 'tailwind.config.js',
     jit: true,
-    exposeConfig: false,
     config: {
       prefix: 'tw-',
       important: true,
@@ -103,7 +110,6 @@ export default {
         './layouts/**/*.vue',
         './pages/**/*.vue',
         './plugins/**/*.{js,ts}',
-        './nuxt.config.{js,ts}',
       ],
       theme: {
         extend: {
@@ -116,12 +122,23 @@ export default {
             hyundai:
               "url('https://ik.imagekit.io/vconexID/Hyundai-RSVP/background.png')",
           },
+          colors: {
+            primary: '#00185a',
+            secondary: '#E3DAD1',
+            'light-black': '#212121',
+            'light-grey': '#f8f9fa',
+          },
           backgroundColor: {
             primary: '#00185a',
-            secondary: '#e7ded6',
+            secondary: '#E3DAD1',
+            'light-black': '#212121',
+            'light-grey': '#f8f9fa',
           },
           textColor: {
             primary: '#00185a',
+            secondary: '#E3DAD1',
+            'light-black': '#212121',
+            'light-grey': '#f8f9fa',
           },
         },
       },
