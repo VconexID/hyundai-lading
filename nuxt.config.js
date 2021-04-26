@@ -68,6 +68,7 @@ export default {
         symbol: 'IDR',
       },
     ],
+    '~/modules/api',
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
