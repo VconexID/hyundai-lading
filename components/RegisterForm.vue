@@ -355,7 +355,6 @@ export default {
             root: true,
           })
         } else {
-          console.log(error)
         }
       }
     },

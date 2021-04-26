@@ -38,13 +38,13 @@
             <v-list-item class="divide-bottom-calendar tw-px-0">
               <v-list-item-content>
                 <v-list-item-title
-                  v-for="(item, i) in 1"
-                  :key="i"
-                  :class="i > 0 ? 'tw-block tw-mt-4' : 'tw-block'"
+                  v-for="(item, b) in 1"
+                  :key="b"
+                  :class="b > 0 ? 'tw-block tw-mt-4' : 'tw-block'"
                 >
                   <div class="tw-flex">
                     <span class="tw-font-hyundai-medium">
-                      April/{{ 20 + i }}
+                      April/{{ 20 + b }}
                     </span>
                     <v-spacer></v-spacer>
                     <span class="tw-font-hyundai-text">Vision of tomorrow</span>
@@ -82,13 +82,13 @@
             <v-list-item class="divide-bottom-calendar tw-px-0">
               <v-list-item-content>
                 <v-list-item-title
-                  v-for="(item, i) in 1"
-                  :key="i"
-                  :class="i > 0 ? 'tw-block tw-mt-4' : 'tw-block'"
+                  v-for="(item, a) in 1"
+                  :key="a"
+                  :class="a > 0 ? 'tw-block tw-mt-4' : 'tw-block'"
                 >
                   <div class="tw-flex">
                     <span class="tw-font-hyundai-medium">
-                      April/{{ 20 + i }}
+                      April/{{ 20 + a }}
                     </span>
                     <v-spacer></v-spacer>
                     <span class="tw-font-hyundai-text">Vision of tomorrow</span>
