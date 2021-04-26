@@ -2,7 +2,7 @@
 
 export default {
   // redirect ssl
-  serverMiddleware: ['redirect-ssl'],
+  // serverMiddleware: ['redirect-ssl'],
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     titleTemplate: '%s - Hyundai',

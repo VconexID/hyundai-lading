@@ -32,9 +32,9 @@
               ></v-img>
             </div>
 
-            <v-spacer v-if="$vuetify.breakpoint.smAndDown" />
+            <v-spacer v-show="$vuetify.breakpoint.smAndDown" />
             <v-btn
-              v-if="$vuetify.breakpoint.smAndDown"
+              v-show="$vuetify.breakpoint.smAndDown"
               icon
               @click="drawerMobile = !drawerMobile"
             >
@@ -44,9 +44,38 @@
         </v-col>
       </v-row>
 
-      <template v-if="$vuetify.breakpoint.smAndDown" v-slot:extension>
+      <template v-slot:extension>
+        <div
+          v-show="$vuetify.breakpoint.mdAndUp"
+          class="tw-w-full tw-bg-white tw-text-center"
+        >
+          <v-btn-toggle v-model="listNavigation" mandatory group>
+            <v-btn
+              v-for="(item, i) in listNavigations"
+              :key="i"
+              :ref="item.value"
+              :value="item.value"
+              rounded
+              class="tw-text-black tw-tracking-normal tw-capitalize button-link"
+              active-class="tw-text-primary"
+              @click="handleGoTo(item.text)"
+            >
+              <div>
+                {{ item.text }}
+              </div>
+
+              <div
+                v-if="item.value === listNavigation"
+                class="tw-w-8 border-bottom"
+              ></div>
+            </v-btn>
+          </v-btn-toggle>
+        </div>
         <v-expand-transition>
-          <div v-if="drawerMobile" class="tw-w-full tw-text-center">
+          <div
+            v-show="$vuetify.breakpoint.smAndDown && drawerMobile"
+            class="tw-w-full tw-text-center"
+          >
             <v-divider class="tw-border-red-400"></v-divider>
 
             <v-list color="#E3DAD1">
@@ -71,31 +100,6 @@
             </v-list>
           </div>
         </v-expand-transition>
-      </template>
-      <template v-else v-slot:extension>
-        <div class="tw-w-full tw-bg-white tw-text-center">
-          <v-btn-toggle v-model="listNavigation" mandatory group>
-            <v-btn
-              v-for="(item, i) in listNavigations"
-              :key="i"
-              :ref="item.value"
-              :value="item.value"
-              rounded
-              class="tw-text-black tw-tracking-normal tw-capitalize button-link"
-              active-class="tw-text-primary"
-              @click="handleGoTo(item.text)"
-            >
-              <div>
-                {{ item.text }}
-              </div>
-
-              <div
-                v-if="item.value === listNavigation"
-                class="tw-w-8 border-bottom"
-              ></div>
-            </v-btn>
-          </v-btn-toggle>
-        </div>
       </template>
     </v-app-bar>
   </div>
