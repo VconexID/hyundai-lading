@@ -306,16 +306,13 @@ export default {
     errors() {
       return this.$store.state.errors
     },
-    baseUrl() {
-      return process.env.apiURL
-    },
   },
   methods: {
     async getDistrict(provinceId) {
       const {
         data: { data },
       } = await this.$axios.get(
-        `${process.env.BASE_URL}/districts/by-province/${provinceId}`
+        `http://127.0.0.1:8000/api/districts/by-province/${provinceId}`
       )
       this.listDistrict = data
     },
