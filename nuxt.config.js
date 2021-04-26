@@ -25,7 +25,7 @@ export default {
 
   // runtime config
   publicRuntimeConfig: {
-    apiURL: process.env.BASE_URL || 'http://127.0.0.1:8000/api',
+    apiURL: 'http://127.0.0.1:8000/api',
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
@@ -68,7 +68,6 @@ export default {
         symbol: 'IDR',
       },
     ],
-    '~/modules/api',
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
