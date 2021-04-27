@@ -33,8 +33,8 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    { src: '~/plugins/persistedState.js' },
     { src: '~/plugins/axios.js' },
+    { src: '~/plugins/persistedState.js' },
     { src: '~/plugins/TiptapVuetify.js' },
     { src: '~/plugins/sendData.js' },
     { src: '~/plugins/fetchData.js' },
