@@ -25,7 +25,7 @@ export default {
 
   // runtime config
   publicRuntimeConfig: {
-    apiURL: 'http://127.0.0.1:8000/api',
+    apiURL: process.env.BASE_URL || 'https://landingapi.hyundai.vconex.id/api',
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)

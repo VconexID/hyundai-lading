@@ -4,7 +4,7 @@
       app
       color="secondary"
       elevate-on-scroll
-      elevation="5"
+      elevation="10"
       dark
       class="wrapper-navigation"
       :extension-height="$vuetify.breakpoint.smAndDown ? 'auto' : 0"

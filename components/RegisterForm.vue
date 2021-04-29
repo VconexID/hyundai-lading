@@ -2,7 +2,7 @@
   <div class="tw-justify-center tw-flex">
     <v-snackbar
       v-model="statusSubmit"
-      :timeout="2000"
+      :timeout="1500"
       app
       tile
       right
@@ -312,7 +312,7 @@ export default {
       const {
         data: { data },
       } = await this.$axios.get(
-        `http://127.0.0.1:8000/api/districts/by-province/${provinceId}`
+        `${process.env.BASE_URL}/districts/by-province/${provinceId}`
       )
       this.listDistrict = data
     },

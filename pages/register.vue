@@ -8,9 +8,9 @@
 <script>
 export default {
   layout: 'register',
-  async asyncData() {
+  async asyncData({ $config: { apiURL } }) {
     const provinces = await fetch(
-      `http://127.0.0.1:8000/api/provinces/only-jabodetabek`
+      `${apiURL}/provinces/only-jabodetabek`
     ).then((res) => res.json())
 
     return { provinces }
