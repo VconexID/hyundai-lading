@@ -312,7 +312,7 @@ export default {
       const {
         data: { data },
       } = await this.$axios.get(
-        `${process.env.BASE_URL}/districts/by-province/${provinceId}`
+        `${this.$config.apiURL}/districts/by-province/${provinceId}`
       )
       this.listDistrict = data
     },
@@ -332,7 +332,7 @@ export default {
         this.$store.dispatch('toggleError', [], {
           root: true,
         })
-        await this.$axios.post(`${process.env.BASE_URL}/visitors`, this.form)
+        await this.$axios.post(`${this.$config.apiURL}/visitors`, this.form)
         await this.$store.dispatch('toggleLoading', { root: true })
         this.statusSubmit = true
         // reset form to initial value
