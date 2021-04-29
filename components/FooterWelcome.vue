@@ -1,22 +1,33 @@
 <template>
-  <v-footer height="80" absolute color="#E3DAD1" app>
+  <v-footer
+    :height="$vuetify.breakpoint.xsOnly ? 150 : 80"
+    absolute
+    color="#E3DAD1"
+    app
+  >
     <v-container>
-      <div class="tw-flex tw-text-center tw-items-center tw-mx-40">
+      <div class="md:tw-flex tw-text-center tw-items-center md:tw-mx-40">
+        <nuxt-link :to="{ name: 'home' }">
+          <div
+            class="tw-flex-grow tw-underline tw-cursor-pointer tw-font-hyundai-regular tw-font-bold tw-text-lg md:tw-text-base"
+          >
+            Klik disini untuk lanjutkan
+          </div>
+        </nuxt-link>
         <div
-          class="tw-flex-grow tw-underline tw-cursor-pointer tw-font-hyundai-regular tw-font-bold"
-          @click.prevent="snackbar = true"
+          class="tw-flex-grow-0 tw-font-hyundai-text tw-text-lg md:tw-text-sm tw-my-2 md:tw-my-0"
         >
-          Klik disini untuk lanjutkan
+          Atau
         </div>
-        <div class="tw-flex-grow-0 tw-font-hyundai-text">Atau</div>
         <div class="tw-flex-grow">
           <v-btn
             :to="{ name: 'register' }"
             tile
             dark
             depressed
+            :block="$vuetify.breakpoint.xsOnly ? true : false"
             color="#00185a"
-            class="tw-tracking-wide tw-text-white tw-capitalize tw-font-hyundai-regular tw-font-bold"
+            class="tw-tracking-wide tw-text-white tw-capitalize tw-font-hyundai-regular tw-font-bold tw-text-lg md:tw-text-sm"
             >bergabung dengan kami</v-btn
           >
         </div>

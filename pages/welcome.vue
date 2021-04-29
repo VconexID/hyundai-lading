@@ -1,13 +1,18 @@
 <template>
   <v-container>
     <h5
-      class="tw-font-hyundai-text tw-font-medium tw-text-center tw-text-black"
+      class="tw-font-hyundai-text tw-font-medium tw-text-center tw-text-black tw-text-xl md:tw-text-sm"
     >
       Temukan di sini
     </h5>
     <div class="tw-flex tw-justify-center tw-my-4">
       <v-card tile elevation="0" width="750">
-        <v-carousel height="380" cycle hide-delimiters show-arrows-on-hover>
+        <v-carousel
+          :height="$vuetify.breakpoint.xsOnly ? 250 : 380"
+          cycle
+          hide-delimiters
+          show-arrows-on-hover
+        >
           <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src">
             <h3
               slot="default"
